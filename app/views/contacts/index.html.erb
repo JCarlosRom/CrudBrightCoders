@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<div class="container">
+    <br>
+    <h1 align="center"> Listado de contactos</h1>
+    <br>
+        <table class="table table-bordered">
+            <tr>
+                <thead class="thead-dark">
+                    <th>Name</th>
+                    <th>Last name</th>
+                    <th>phone</th>
+                    <th>E-Mail</th>
+                    <th>Age</th>
+                    <th>Relationship</th>
+                    <th colspan="2">Acción</th>
+                </thead>
+
+            </tr>
+            <% @contacts.each do |contact| %>
+            <tr>
+                <td><%=contact.name %></td>
+                <td><%=contact.lastname %></td>
+                <td><%=contact.age %></td>
+                <td><%=contact.phone %></td>
+                <td><%=contact.email %></td>
+                <td><%=contact.relationship%>
+    
+                <td>
+                    <%= link_to "Editar", edit_contact_path(contact)%>
+                </td>
+                <td>
+                    <%= link_to "Eliminar", contact, method: :delete, data:{confirm:"¿Deseas eliminar el contacto?"} %>
+                </td>
+            </tr>
+            <% end %>
+        </table>
+        <div class="row">
+            <div class="col-md-4">
+                <form method="get" action="contacts/new">
+                    <button type="submit" class="btn btn-success">Agregar contacto</button>
+                </form>
+            </div>
+        </div>
+
+</div>
